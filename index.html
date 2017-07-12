@@ -65,26 +65,25 @@ Still need to create:
 
   <script type="text/javascript">
 
-  var targetNumber = 53;
 
-  $("#number-to-guess").text(targetNumber);
 
-  //     var min = 19;
-  //     var max = 120;
-  //     function randomIntFromInterval(min,max)
-		// {
-		//     return Math.floor(Math.random()*(max-min+1)+min);
-		// };
-      // var targetNumber = 
+     var targetNumber;
 		// <!-- From https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript -->
-
-      var counter = 0;
-
+	function getRandomIntInclusive(min, max) {
+	  min = Math.ceil(min);
+	  max = Math.floor(max);
+	  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+	}
+    targetNumber = getRandomIntInclusive(19, 120);
+    $("#number-to-guess").text(targetNumber);
       // Now for the hard part. Creating multiple crystals each with their own unique number value.
 
       // We begin by expanding our array to include four options.
-      var crystalArray = [10, 5, 3, 7]
-
+      var counter = 0;
+      var crystalArray = [];
+      for (var i = 0; i < 4; i++) {
+      	crystalArray.push(getRandomIntInclusive(2,10));
+      }
 //       var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
       // Not ready for Prime Time --> Want to randomize values of "crystalArray".
@@ -95,7 +94,12 @@ Still need to create:
 	  //	    return Math.floor(Math.random()*(maxA-minA+1)+minA);
 	  //	};
 
-
+/*	function getRandomIntInclusive(min, max) {
+	  min = Math.ceil(min);
+	  max = Math.floor(max);
+	  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+	}
+*/
       // Next we create a for loop to create crystals for every numberOption.
       for (var i = 0; i < crystalArray.length; i++) {
 
